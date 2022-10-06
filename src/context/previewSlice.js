@@ -1,19 +1,43 @@
 const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
-	text: {},
-	previewedText: {},
+	text: `
+	Heading
+	=======
+	Sub-heading
+	-----------
+	### Another deeper heading
+	Paragraphs are separated
+	by a blank line.
+	Leave 2 spaces at the end of a line to do a
+	line break
+	Text attributes *italic*, **bold**,
+	\`monospace\`, ~~strikethrough~~ .
+	Shopping list:
+	  * apples
+	  * oranges
+	  * pears
+	Numbered list:
+	  1. apples
+	  2. oranges
+	  3. pears
+	The rain---not the reign---in
+	Spain.
+	 *[Özgür Kalkan](http://github.com/kalkanozgur)*`,
+	previewText: ``,
 };
 
 const previewSlice = createSlice({
 	name: "previewSlice",
 	initialState,
 	reducers: {
-		createText: (state, action) => {
-			state.text = action.payload;
+		changeText: (state, { payload }) => {
+			state.text = `${payload}`;
 		},
 	},
 	extraReducers: {},
 });
+
+export const { changeText } = previewSlice.actions;
 
 export default previewSlice.reducer;
