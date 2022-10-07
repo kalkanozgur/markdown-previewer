@@ -32,10 +32,9 @@ const previewSlice = createSlice({
 	initialState,
 	reducers: {
 		changeText: (state, { payload }) => {
-			state.text = `${payload}`;
+			state.text = payload;
 		},
 	},
-	extraReducers: {},
 });
 
 export const { changeText } = previewSlice.actions;

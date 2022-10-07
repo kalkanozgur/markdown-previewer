@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { useSelector } from "react-redux";
+import remarkGfm from "remark-gfm";
 
 function PreviewPanel() {
 	const storedText = useSelector((state) => state.preview.text);
@@ -8,7 +10,7 @@ function PreviewPanel() {
 	return (
 		<div className="bg-panelColor flex-1 container overflow-auto relative">
 			{/* RIGHT PANEL */}
-			<article>{text}</article>
+			<ReactMarkdown children={storedText} remarkPlugins={[remarkGfm]} />
 		</div>
 	);
 }
